@@ -7,7 +7,7 @@ describe "StaticPages" do
   	describe "Home page" do
 
   		it "should have the content 'Browser App'" do
-  			visit '/static_pages/home'
+  			visit root_path
   			page.should have_content('Browser App')
   		end
   	end
