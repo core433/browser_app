@@ -10,6 +10,7 @@ BrowserApp::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/help', to: 'static_pages#help'
+  match '/how', to: 'static_pages#how'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
