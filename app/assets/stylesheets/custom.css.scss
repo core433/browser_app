@@ -2,11 +2,22 @@
 
 /* mixins, variables, etc. */
 
+$light_blue: #d5e9ff;
+
+$theme_black: #000000;
+$theme_navy: #2a415a;
+$theme_navy_gradient: #3a70af;
+$theme_gray: #626c78;
+$theme_lightgray: #e9ebef;
+$theme_orange: #ec9600;
+$theme_white: #ffffff;
+
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
   -webkit-box-sizing: border-box; 
   box-sizing: border-box;
 }
+
 
 /* universal */
 
@@ -73,18 +84,18 @@ htitle {
 }
 
 howto {
-  font-size: 1.2em;
-  color: #777;
+  font-size: 1.1em;
+  color: $theme_gray;
   text-align: left;
-  letter-spacing: -1px;
+  letter-spacing: 0px;
 }
 
 intro {
-  font-size: 1.8em;
+  font-size: 1.6em;
   letter-spacing: -1px;
   text-align: left;
   font-style: italic;
-  color: #777;
+  color: $theme_gray;
   line-height: 1.2;
   b {
     font-weight: bold;
@@ -92,13 +103,13 @@ intro {
   }
   b2 {
     font-weight: bold;
-    color: hsl(202, 100%, 41%);
-    font-size: 1.1em;
+    color: $theme_orange;
+    font-size: 1.3em;
   }
   main {
     font-weight: bold;
-    color: #000;
-    font-size: 1.1em;
+    color: $theme_black;
+    font-size: 1.4em;
   }
   small {
     font-size: 0.9em;
@@ -305,15 +316,15 @@ aside {
 .btn-custom {
   background-color: hsl(202, 100%, 21%) !important;
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0084d1", endColorstr="#00436b");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#0084d1), to(#00436b));
-  background-image: -moz-linear-gradient(top, #0084d1, #00436b);
-  background-image: -ms-linear-gradient(top, #0084d1, #00436b);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0084d1), color-stop(100%, #00436b));
-  background-image: -webkit-linear-gradient(top, #0084d1, #00436b);
-  background-image: -o-linear-gradient(top, #0084d1, #00436b);
-  background-image: linear-gradient(#0084d1, #00436b);
-  border-color: #00436b #00436b hsl(202, 100%, 16%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$theme_navy_gradient", endColorstr="$theme_navy");
+  background-image: -khtml-gradient(linear, left top, left bottom, from($theme_navy_gradient), to($theme_navy));
+  background-image: -moz-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: -ms-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $theme_navy_gradient), color-stop(100%, $theme_navy));
+  background-image: -webkit-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: -o-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: linear-gradient($theme_navy_gradient, $theme_navy);
+  border-color: $theme_navy_gradient $theme_navy hsl(202, 100%, 16%);
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
   -webkit-font-smoothing: antialiased;
@@ -321,4 +332,69 @@ aside {
   padding: 16px 20px 16px;
   font-weight: bold;
 }
+
+.btn-custom_small {
+  background-color: hsl(202, 100%, 21%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$theme_navy_gradient", endColorstr="$theme_navy");
+  background-image: -khtml-gradient(linear, left top, left bottom, from($theme_navy_gradient), to($theme_navy));
+  background-image: -moz-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: -ms-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $theme_navy_gradient), color-stop(100%, $theme_navy));
+  background-image: -webkit-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: -o-linear-gradient(top, $theme_navy_gradient, $theme_navy);
+  background-image: linear-gradient($theme_navy_gradient, $theme_navy);
+  border-color: $theme_navy_gradient $theme_navy hsl(202, 100%, 16%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.6em;
+  padding: 8px 10px 8px;
+  font-weight: bold;
+}
+
+.navbar
+{
+  .navbar-inner {
+    background-color: $theme_lightgray; /* fallback color, place your own */
+
+    /* Gradients for modern browsers, replace as you see fit */
+    background-image: -moz-linear-gradient(top, $theme_white, $theme_lightgray);
+    background-image: -ms-linear-gradient(top, $theme_white, $theme_lightgray);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($theme_white), to($theme_lightgray));
+    background-image: -webkit-linear-gradient(top, $theme_white, $theme_lightgray);
+    background-image: -o-linear-gradient(top, $theme_white, $theme_lightgray);
+    background-image: linear-gradient(top, $theme_white, $theme_lightgray);
+    background-repeat: repeat-x;
+
+    /* IE8-9 gradient filter */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$theme_white', endColorstr='$theme_lightgray', GradientType=0);
+
+    /* nav bar text colors */
+    div > ul a, .nav a {
+      color: $theme_gray;
+    }
+
+    #logo {
+      color: $theme_navy;
+    }
+
+  }
+}
+
+
+/* files page */
+
+.file_nav {
+  background-color: $light_blue;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+
 

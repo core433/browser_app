@@ -11,4 +11,8 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+  def files
+  	@user = current_user
+  end
+
 end

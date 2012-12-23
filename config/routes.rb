@@ -9,6 +9,7 @@ BrowserApp::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
+  match '/files', to: 'static_pages#files'
   match '/help', to: 'static_pages#help'
   match '/how', to: 'static_pages#how'
 

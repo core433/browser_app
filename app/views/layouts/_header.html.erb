@@ -1,13 +1,19 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #3b1405 !important">
   <div class="navbar-inner">
     <div class="container">
       <%= link_to "mobifly", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <% if current_uri != '/' %>
+            <% if !signed_in? %>
               <li><%= link_to "Home", root_path %></li>
+            <% else %>
+              <li><%= link_to "My Files", files_path %></li>
+            <% end %>
           <% end %>
-          <li><%= link_to "How It Works", how_path %></li>
+          <% if !signed_in? %>
+            <li><%= link_to "How It Works", how_path %></li>
+          <% end %>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">
