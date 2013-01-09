@@ -1,6 +1,116 @@
+<% content_for(:head) do %>
+<!--Load jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+<%= javascript_include_tag('files/files_render') %>
+<% end %>
+
+<!-- provide some temporary hard-coded json for use as our file structure -->
+
+<script id="test_json" type="application/json">
+{
+	"name": "root",
+	"type": "dir",
+	"children": {
+		"folderA": {
+			"name": "folderA",
+			"type": "dir",
+			"children": {}
+		}
+	}
+}
+</script>
+
+<script id="filesys_json" type="application/json">
+    {
+    	
+    		"name": "/",
+    		"path": "/",
+    		"type": "root",
+    		"children": [
+    			{
+    				"name": "Essay.docx",
+    				"path": "/Essay.docx",
+    				"type": "file"
+    			},
+    			{
+    				"name": "Pic.jpg",
+    				"path": "/Pic.jpg",
+    				"type": "file"
+    			},
+    			{
+    				"name": "Documents",
+    				"path": "/Documents",
+    				"type": "folder",
+    				"children": [
+    					{
+    						"name": "foobar.baz",
+    						"path": "/Documents/foobar.baz",
+    						"type": "file"
+    					},
+    					{
+    						"name": "Dev Work",
+    						"path": "/Documents/Dev Work",
+    						"type": "folder",
+    						"children": [
+    							{
+    								"name" : "PHP Dev",
+    								"path": "/Documents/Dev Work/PHP Dev",
+    								"type": "folder",
+    								"children": [
+    									{
+    										"name": "home.php",
+    										"path": "/Documents/Dev Work/PHP Dev/home.php",
+    										"type": "file"
+    									}
+    								]
+    							},
+    							{
+    								"name": "HTML 5",
+    								"path": "/Documents/Dev Work/HTML 5",
+    								"type": "folder",
+    								"children": [
+    									{
+    										"name": "home.html",
+    										"path": "/Documents/Dev Work/HTML 5/home.html",
+    										"type": "file"
+    									},
+    									{
+    										"name": "help.html",
+    										"path": "/Documents/Dev Work/HTML 5/help.html",
+    										"type": "file"
+    									}
+    								]
+    							}
+    						]
+    					}
+    				]
+    			},
+    			{
+    				"name": "My Photos",
+    				"path": "/My Photos",
+    				"type": "folder",
+    				"children": [
+    					{
+    						"name": "me.png",
+    						"path": "/My Photos/me.png",
+    						"type": "file"
+    					},
+    					{
+    						"name": "dog.png",
+    						"path": "/My Photos/dog.png",
+    						"type": "file"
+    					}
+    				]
+    			}
+    		]
+    	
+    }
+</script>
+
 <% provide(:title, @user.name + " Files") %>
 
-<div class="row">
+<div class="row" style="margin-top: 50px">
 	<aside class="span3">
 		<section>
 			<h1>
@@ -9,8 +119,11 @@
 		</section>
 	</aside>
 	<div class="span9">
-		<div class="file_nav">
+		<div class="file_nav" id="file_nav">
 			test
+		</div>
+		<div class="files_box" id="files_box">
+			another test
 		</div>
 	</div>
 </div>

@@ -7,14 +7,13 @@
           <% if current_uri != '/' %>
             <% if !signed_in? %>
               <li><%= link_to "Home", root_path %></li>
-            <% else %>
-              <li><%= link_to "My Files", files_path %></li>
             <% end %>
           <% end %>
           <% if !signed_in? %>
             <li><%= link_to "How It Works", how_path %></li>
           <% end %>
           <% if signed_in? %>
+            <li><%= link_to "My Files", files_path %></li>
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

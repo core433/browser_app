@@ -396,5 +396,62 @@ aside {
   font-size: 1.2em;
 }
 
+.files_box {
+  background-color: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 300px;
+  border-style: dotted;
+  border-width: 1px;
+  border-color: #ddd;
+}
+
+.file {
+  padding-top: 5px;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  float: left;
+  background-color: #eee;
+
+  h1 {
+    font-size: 1.2em;
+    letter-spacing: 0px; 
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+}
+
+.folder {
+  padding-top: 5px;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  float: left;
+  background-color: #eda;
+
+  h1 {
+    font-size: 1.2em;
+    letter-spacing: 0px; 
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+}
+
+
+
+
+
+
 
 
