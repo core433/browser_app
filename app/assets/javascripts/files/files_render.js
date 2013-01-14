@@ -3,11 +3,16 @@ var filesys;
 var navBar;
 var mainFolder;
 
+var backHistory;
+
 // $.ready is from jquery
 $(document).ready(function() {
 
 	navBar = document.getElementById('file_nav');
 	mainFolder = document.getElementById('files_box');
+	toolbar = document.getElementById('toolbar');
+
+	backHistory = [];
 
 	
 	// store the entire json directory tree in var filesys
@@ -21,12 +26,13 @@ $(document).ready(function() {
 
 	navBar.innerHTML = getNavBar();
 	mainFolder.innerHTML = getFolderHTML();
+	toolbar.innerHTML = getToolbarHTML();
 
 });
 
 function getNavBar()
 {
-	ret = "<a onclick='changeDirPath(\"/\")'>Home</a>";
+	ret = "<a onclick='changeDirPath(\"/\", true)'>Home</a>";
 
 	var folders = cwd.path.split("/");
 	//alert(folders);
@@ -40,7 +46,7 @@ function getNavBar()
 			if (i < folders.length - 1)
 			{
 				folder_path += "/"+folders[i];
-				ret += " / <a onclick='changeDirPath(\"" + folder_path + "\")'>" + folders[i] + "</a>";
+				ret += " / <a onclick='changeDirPath(\"" + folder_path + "\", true)'>" + folders[i] + "</a>";
 			}
 			else
 			{
@@ -54,11 +60,24 @@ function getNavBar()
 
 }
 
-function changeDirPath(dirpath)
+// change to display @dirpath
+// @storeHistory is a bool that determines whether to store
+// the navigation history for back functionality.  For instance,
+// if we're calling changeDirPath from the goBack() function,
+// do not want to store the history, otherwise will end up in
+// closed loop of going back
+function changeDirPath(dirpath, storeHistory)
 {
+	// first store the cwd path into backHistory so we can
+	// backtrack using the back button
+	if (storeHistory)
+	{
+		backHistory.push(cwd.path);
+	}
+
 	var segments = dirpath.split("/");
 
-	cur_path = filesys;
+	var cur_path = filesys;
 
 	for (var i = 0; i < segments.length; i++)
 	{
@@ -110,7 +129,8 @@ function changeDir(dirname)
 
 }
 
-function getFolderHTML(){
+function getFolderHTML()
+{
 	
 	//alert('getfolderhtml');
 
@@ -138,7 +158,7 @@ function getFolderHTML(){
 
 		ret += "<div class='folder' "
 		//ret += "onclick='changeDir(\"" + folder.name +"\")'>";
-		ret += "onclick='changeDirPath(\"" + folder.path +"\")'>";
+		ret += "onclick='changeDirPath(\"" + folder.path +"\", true)'>";
 		ret += "<h1>" + folder.name + "</hi></div>";
 	}
 
@@ -152,3 +172,26 @@ function getFolderHTML(){
 	return ret;
 
 }
+
+function goBack()
+{
+	if (backHistory.length == 0)
+	{
+		return;
+	}
+
+	else
+	{
+		changeDirPath(backHistory.pop(), false)
+	}
+}
+
+function getToolbarHTML()
+{
+	ret = "<a onclick='goBack()'>Back</a>";
+
+	return ret;
+
+}
+
+
