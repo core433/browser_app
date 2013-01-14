@@ -4,6 +4,7 @@ var navBar;
 var mainFolder;
 
 var backHistory;
+var fwdHistory;
 
 // $.ready is from jquery
 $(document).ready(function() {
@@ -13,6 +14,7 @@ $(document).ready(function() {
 	toolbar = document.getElementById('toolbar');
 
 	backHistory = [];
+	fwdHistory = [];
 
 	
 	// store the entire json directory tree in var filesys
@@ -179,16 +181,29 @@ function goBack()
 	{
 		return;
 	}
-
 	else
 	{
+		fwdHistory.push(cwd.path);
 		changeDirPath(backHistory.pop(), false)
+	}
+}
+
+function goFwd()
+{
+	if (fwdHistory.length == 0)
+	{
+		return;
+	}
+	else
+	{
+		changeDirPath(fwdHistory.pop(), true)
 	}
 }
 
 function getToolbarHTML()
 {
 	ret = "<a onclick='goBack()'>Back</a>";
+	ret += " <a onclick='goFwd()'>Fwd</a>";
 
 	return ret;
 
